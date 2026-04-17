@@ -1,0 +1,15 @@
+@import "./avatar.css";
+@import "./aura-view.css";
+@import "./card.css";
+@import "./prism.css";
+@import "./tailwind.css";
+@config "./tailwind.config.js";
+
+hr {
+  background: var(--vaadin-border-color-secondary);
+  border: 0;
+  margin: var(--vaadin-gap-m) 0;
+  max-height: 1px;
+  min-height: 1px;
+  place-self: stretch stretch;
+}
