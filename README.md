@@ -8,7 +8,6 @@ A demo application built with Vaadin 25 and Spring Boot 4, showcasing the Aura t
 - **Components** -- Interactive gallery of Vaadin UI components
 - **Products** -- Filterable product grid with edit dialog
 - **Users** -- User management grid with avatars and role filtering
-- **Reports** -- Chart placeholders (coming soon)
 - **Settings** -- Tabbed settings with general, notifications, security, and integrations
 
 ## Requirements
