@@ -2,6 +2,8 @@
 
 A demo application built with Vaadin 25 and Spring Boot 4, showcasing the Aura theme and common UI patterns.
 
+https://vaadin-demo.fly.dev
+
 ## Views
 
 - **Dashboard** -- KPI stat cards and a recent orders grid
