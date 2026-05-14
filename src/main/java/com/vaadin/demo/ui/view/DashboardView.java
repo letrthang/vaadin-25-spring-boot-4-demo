@@ -30,8 +30,6 @@ import com.vaadin.flow.router.RouteAlias;
 
 import java.time.format.DateTimeFormatter;
 
-import static com.vaadin.demo.ui.util.Tailwind.*;
-
 
 @Route("")
 @RouteAlias("dashboard")
@@ -39,6 +37,8 @@ import static com.vaadin.demo.ui.util.Tailwind.*;
 public class DashboardView extends View {
 
     public DashboardView(SourceService sourceService) {
+        addClassName("dashboard-view");
+
         ViewHeader header = createHeader(sourceService);
         Div content = createContent();
 
@@ -50,7 +50,7 @@ public class DashboardView extends View {
      */
     private Div createContent() {
         Div content = new Div(createStatCards(), createOrdersCard());
-        content.addClassNames(Display.FLEX, FlexDirection.COLUMN, Gap.LARGE, Overflow.HIDDEN, Padding.Bottom.LARGE, Padding.Horizontal.LARGE);
+        content.addClassName("content");
         return content;
     }
 
@@ -81,7 +81,7 @@ public class DashboardView extends View {
                 createStatCard("New Orders", "284", "+8.1%", true),
                 createStatCard("Churn Rate", "2.4%", "-0.3%", false)
         );
-        cards.addClassNames(Display.FLEX, FlexWrap.WRAP, Gap.LARGE);
+        cards.addClassName("stat-cards");
         return cards;
     }
 
@@ -91,7 +91,7 @@ public class DashboardView extends View {
     private Card createOrdersCard() {
         Card card = new Card();
         card.add(createOrdersGrid());
-        card.addClassNames(Aura.SURFACE_SOLID, MinHeight.ZERO);
+        card.addClassNames(Aura.SURFACE_SOLID, "orders-card");
         card.setHeader(createOrdersHeading());
         card.setHeaderSuffix(createOrdersMenuBar());
         return card;
@@ -102,7 +102,7 @@ public class DashboardView extends View {
      */
     private H2 createOrdersHeading() {
         H2 heading = new H2("Recent Orders");
-        heading.addClassNames(FontSize.XLARGE);
+        heading.addClassName("orders-heading");
         return heading;
     }
 
@@ -141,17 +141,16 @@ public class DashboardView extends View {
      */
     private Card createStatCard(String label, String value, String trend, boolean favorable) {
         Span valueSpan = new Span(value);
-        valueSpan.addClassNames(FontWeight.SEMIBOLD, FontSize.XLARGE);
+        valueSpan.addClassName("stat-value");
 
         Badge trendBadge = new Badge(trend);
-        trendBadge.addClassName(Margin.Start.SMALL);
+        trendBadge.addClassName("stat-trend");
         trendBadge.addThemeVariants(favorable ? BadgeVariant.SUCCESS : BadgeVariant.ERROR);
         trendBadge.setIcon(favorable ? VaadinIcon.TRENDING_UP.create() : VaadinIcon.TRENDING_DOWN.create());
 
         Card card = new Card();
         card.add(valueSpan, trendBadge);
-        card.addClassName(Flex.GROW);
-        card.getStyle().set("--vaadin-card-title-color", "var(--vaadin-text-color-secondary)");
+        card.addClassName("stat-card");
         card.setTitle(label);
         return card;
     }
