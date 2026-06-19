@@ -20,6 +20,7 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.Grid.SelectionMode;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.grid.HeaderRow;
+import com.vaadin.flow.component.grid.contextmenu.GridContextMenu;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.select.Select;
@@ -92,6 +93,10 @@ public class ProductsView extends View {
         var dataView = grid.setItems(SampleData.products());
 
         appendFilterRow(grid, dataView, nameCol, categoryCol, statusCol, priceCol, stockCol, actionsCol);
+
+        GridContextMenu<SampleData.Product> contextMenu = grid.addContextMenu();
+        contextMenu.addItem("Edit", e -> e.getItem().ifPresent(this::openProductDialog));
+
         return grid;
     }
 
